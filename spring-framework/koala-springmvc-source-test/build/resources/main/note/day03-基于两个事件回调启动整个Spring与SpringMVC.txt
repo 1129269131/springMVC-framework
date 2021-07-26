@@ -1,0 +1,8 @@
+一、
+	1、给 FrameworkServlet.java 类的 initServletBean() 方法打上断点
+	2、给 HelloService01.java 类的 构造器打上断点
+	3、给 HelloController02.java 类的 构造器打上断点
+	4、给 QuickAppStarter01.java 类的 所有重写方法 打上断点
+	5、测试前先注释掉 AppStarter01.java 类，避免被该类影响
+	6、debugger模式启动tomcat
+	7、查看idea的调用堆栈，从下往上查看它的调用过程（注：灰色部分为tomcat的调用堆栈，应忽略）

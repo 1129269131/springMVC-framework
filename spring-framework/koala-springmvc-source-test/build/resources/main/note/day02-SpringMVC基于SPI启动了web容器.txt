@@ -1,0 +1,6 @@
+一、
+	1、给 SpringServletContainerInitializer.java 类的 onStartup() 方法打上断点
+	2、给 AppStarter01.java 类的 onStartup(ServletContext servletContext) 方法打上断点
+	3、测试前先注释掉 QuickAppStarter01.java 类，避免被该类影响
+	4、debugger模式启动tomcat
+	5、查看idea的调用堆栈，从下往上查看它的调用过程（注：灰色部分为tomcat的调用堆栈，应忽略）

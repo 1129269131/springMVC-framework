@@ -1,0 +1,9 @@
+一、给应用添加Tomcat
+	1、idea头部菜单栏点击Run--》下拉选择 Edit Configurations... --》点击加号+（Add New Configuration）--》选择Tomcat Server --》local（注：本地没有Tomcat的需在右边 Configure...去指定）
+	2、指定要部署的应用：Deployment --》底部加号+（add）--》Build Artifacts --》Select Artifacts选择项目
+二、运行项目
+	1、点击idea头部菜单Tomcat启动部分便可以启动项目了
+	2、测试：
+		浏览器访问：http://localhost:8080/koala_springmvc_source_test/hello01
+	
+PS：启动本地tomcat 双击：D:\tomcat-9.0.16\apache-tomcat-9.0.16\bin\startup.bat

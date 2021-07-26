@@ -1,0 +1,9 @@
+一、
+	1、给 FrameworkServlet.java 抽象类的 protected final void processRequest(HttpServletRequest request, HttpServletResponse response) 方法中打上断点
+	2、测试前先注释掉 AppStarter01.java 类，避免被该类影响
+	3、debugger模式启动tomcat
+	4、浏览器访问：http://localhost:8080/koala_springmvc_source_test/hello02
+	5、不断的 Step Over，直到运行到 doService(request, response); 地方时
+	6、当运行到 doService(request, response); 地方时，点击Step Into,方法变红后点击进入该方法后 不断点击Step Over进行分析
+	7、当运行到 doDispatch(request, response); 地方时，点击Step Into,方法变红后点击进入该方法后 不断点击Step Over进行分析
+	8、查看idea的调用堆栈，从下往上查看它的调用过程（注：灰色部分为tomcat的调用堆栈，应忽略）

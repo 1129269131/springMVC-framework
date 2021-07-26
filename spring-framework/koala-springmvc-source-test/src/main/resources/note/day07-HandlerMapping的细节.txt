@@ -1,0 +1,7 @@
+一、
+	1、给 DispatcherServlet.java 类的 protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception { 方法中打上断点
+	2、给 AbstractHandlerMethodMapping.java 类的 this.registry.put(mapping, 方法中打上断点
+	3、测试前先注释掉 AppStarter01.java 类，避免被该类影响
+	4、debugger模式启动tomcat
+	5、浏览器访问：http://localhost:8080/koala_springmvc_source_test/hello02
+	6、查看idea的调用堆栈，从下往上查看它的调用过程（注：灰色部分为tomcat的调用堆栈，应忽略）
