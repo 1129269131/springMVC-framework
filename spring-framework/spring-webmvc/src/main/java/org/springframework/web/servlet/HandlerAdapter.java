@@ -47,7 +47,7 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter
  * @see org.springframework.web.servlet.handler.SimpleServletHandlerAdapter
  */
-public interface HandlerAdapter { //适配器+策略
+public interface HandlerAdapter { //day08：适配器+策略
 
 	/**
 	 * Given a handler instance, return whether or not this {@code HandlerAdapter}
@@ -60,7 +60,7 @@ public interface HandlerAdapter { //适配器+策略
 	 * @param handler the handler object to check
 	 * @return whether or not this object can use the given handler
 	 */
-	boolean supports(Object handler); //策略、
+	boolean supports(Object handler); //day08：策略、
 
 	/**
 	 * Use the given handler to handle this request.
@@ -74,7 +74,7 @@ public interface HandlerAdapter { //适配器+策略
 	 * @return a ModelAndView object with the name of the view and the required
 	 * model data, or {@code null} if the request has been handled directly
 	 */
-	@Nullable //适配的过程，把request、response和handler连接起来进行处理，处理完成得到 ModelAndView（页面解析过程就靠它）
+	@Nullable //day08：适配的过程，把request、response和handler连接起来进行处理，处理完成得到 ModelAndView（页面解析过程就靠它）
 	ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception;
 
 	/**

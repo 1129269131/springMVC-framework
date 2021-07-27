@@ -45,14 +45,14 @@ import org.springframework.util.StringUtils;
  *
  * @author Rod Johnson
  * @author Juergen Hoeller
- * @see SimpleUrlHandlerMapping  把beanName作为url进行映射处理
+ * @see SimpleUrlHandlerMapping  day08：把beanName作为url进行映射处理
  */
 public class BeanNameUrlHandlerMapping extends AbstractDetectingUrlHandlerMapping {
 
 	/**
 	 * Checks name and aliases of the given bean for URLs, starting with "/".
 	 */
-	@Override  //决定使用哪个url注册
+	@Override  //day08：决定使用哪个url注册
 	protected String[] determineUrlsForHandler(String beanName) {
 		List<String> urls = new ArrayList<>();
 		if (beanName.startsWith("/")) {

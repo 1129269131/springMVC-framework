@@ -443,7 +443,7 @@ public abstract class AbstractUrlHandlerMapping extends AbstractHandlerMapping i
 				setDefaultHandler(resolvedHandler);
 			}
 			else {
-				this.handlerMap.put(urlPath, resolvedHandler); //当前beanName以/开始作为urlPath，当前bean信息作为handler注册进去
+				this.handlerMap.put(urlPath, resolvedHandler); //day08：当前beanName以/开始作为urlPath，当前bean信息作为handler注册进去
 				if (getPatternParser() != null) {
 					this.pathPatternHandlerMap.put(getPatternParser().parse(urlPath), resolvedHandler);
 				}

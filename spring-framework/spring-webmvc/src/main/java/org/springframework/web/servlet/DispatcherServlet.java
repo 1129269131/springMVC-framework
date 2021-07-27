@@ -1075,7 +1075,7 @@ public class DispatcherServlet extends FrameworkServlet {
 					return;
 				}
 
-				//day07：适配器怎么找的、 Determine handler adapter for the current request.
+				//day08：适配器怎么找的、 Determine handler adapter for the current request.
 				HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
 
 				// Process last-modified header, if supported by the handler.
@@ -1087,12 +1087,12 @@ public class DispatcherServlet extends FrameworkServlet {
 						return;
 					}
 				}
-				//所有拦截器的 preHandle 执行
+				//day09：所有拦截器的 preHandle 执行
 				if (!mappedHandler.applyPreHandle(processedRequest, response)) {
-					return; //使用 mappedHandler整个链
+					return; //day09：使用 mappedHandler整个链
 				}
 
-				//真正来执行目标方法 Actually invoke the handler.（反射执行目标方法、确定参数值，处理返回值【封装成ModelAndView】）
+				//day08：真正来执行目标方法 Actually invoke the handler.（反射执行目标方法、确定参数值，处理返回值【封装成ModelAndView】）
 				mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
 
 				if (asyncManager.isConcurrentHandlingStarted()) {
@@ -1313,7 +1313,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	 * @throws ServletException if no HandlerAdapter can be found for the handler. This is a fatal error.
 	 */
 	protected HandlerAdapter getHandlerAdapter(Object handler) throws ServletException {
-		if (this.handlerAdapters != null) { //拿到默认的所有适配器
+		if (this.handlerAdapters != null) { //day08：拿到默认的所有适配器
 			for (HandlerAdapter adapter : this.handlerAdapters) {
 				if (adapter.supports(handler)) {
 					return adapter;

@@ -10,6 +10,12 @@ com/koala/web/service/HelloService01.java
  com.koala.web.service.HelloService01
 com/koala/web/controller/HelloController02.java
  com.koala.web.controller.HelloController02
+com/koala/web/controller/HelloHttpRequestHandler01.java
+ com.koala.web.controller.HelloHttpRequestHandler01
+com/koala/web/controller/HelloSimpleController01.java
+ com.koala.web.controller.HelloSimpleController01
+com/koala/web/controller/HelloController03.java
+ com.koala.web.controller.HelloController03
 com/koala/web/QuickAppStarter01.java
  com.koala.web.QuickAppStarter01
 com/koala/web/config/SpringMVCConfig01.java
