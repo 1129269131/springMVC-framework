@@ -133,12 +133,12 @@ public class InvocableHandlerMethod extends HandlerMethod {
 	@Nullable
 	public Object invokeForRequest(NativeWebRequest request, @Nullable ModelAndViewContainer mavContainer,
 			Object... providedArgs) throws Exception {
-		//获取方法的请求参数
+		//day10：获取方法的请求参数
 		Object[] args = getMethodArgumentValues(request, mavContainer, providedArgs);
 		if (logger.isTraceEnabled()) {
 			logger.trace("Arguments: " + Arrays.toString(args));
 		}
-		return doInvoke(args); //就是反射执行
+		return doInvoke(args); //day10：就是反射执行
 	}
 
 	/**
@@ -149,21 +149,21 @@ public class InvocableHandlerMethod extends HandlerMethod {
 	 */
 	protected Object[] getMethodArgumentValues(NativeWebRequest request, @Nullable ModelAndViewContainer mavContainer,
 			Object... providedArgs) throws Exception {
-		//直接拿到方法的所有参数
+		//day10：直接拿到方法的所有参数
 		MethodParameter[] parameters = getMethodParameters();
 		if (ObjectUtils.isEmpty(parameters)) {
 			return EMPTY_ARGS;
 		}
-		//准备args数组（和parameters一样长），挨个确定每个参数都是什么值
+		//day10：准备args数组（和parameters一样长），挨个确定每个参数都是什么值
 		Object[] args = new Object[parameters.length];
 		for (int i = 0; i < parameters.length; i++) {
 			MethodParameter parameter = parameters[i];
 			parameter.initParameterNameDiscovery(this.parameterNameDiscoverer);
-			args[i] = findProvidedArgument(parameter, providedArgs); //先去已提供的参数中找
+			args[i] = findProvidedArgument(parameter, providedArgs); //day10：先去已提供的参数中找
 			if (args[i] != null) {
 				continue;
 			}
-			if (!this.resolvers.supportsParameter(parameter)) { //支持这种参数的解析器也会被放到缓存，下一次进来，就不用27个人挨个判断
+			if (!this.resolvers.supportsParameter(parameter)) { //day10：支持这种参数的解析器也会被放到缓存，下一次进来，就不用27个人挨个判断
 				throw new IllegalStateException(formatArgumentError(parameter, "No suitable resolver"));
 			}
 			try {
@@ -194,7 +194,7 @@ public class InvocableHandlerMethod extends HandlerMethod {
 			if (KotlinDetector.isSuspendingFunction(method)) {
 				return CoroutinesUtils.invokeSuspendingFunction(method, getBean(), args);
 			}
-			return method.invoke(getBean(), args); //确定参数值
+			return method.invoke(getBean(), args); //day10：确定参数值
 		}
 		catch (IllegalArgumentException ex) {
 			assertTargetBean(method, getBean(), args);

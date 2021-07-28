@@ -93,7 +93,7 @@ public class RequestParamMapMethodArgumentResolver implements HandlerMethodArgum
 				}
 				return new LinkedMultiValueMap<>(0);
 			}
-			else {  //调用原生request.getParameterMap()
+			else {  //day10：调用原生request.getParameterMap()
 				Map<String, String[]> parameterMap = webRequest.getParameterMap();
 				MultiValueMap<String, String> result = new LinkedMultiValueMap<>(parameterMap.size());
 				parameterMap.forEach((key, values) -> {

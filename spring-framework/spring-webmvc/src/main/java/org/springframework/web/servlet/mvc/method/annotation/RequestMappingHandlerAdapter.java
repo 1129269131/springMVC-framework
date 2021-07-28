@@ -804,7 +804,7 @@ public class RequestMappingHandlerAdapter extends AbstractHandlerMethodAdapter
 			}
 		}
 		else {
-			//执行目标方法 No synchronization on session demanded at all...
+			//day10：执行目标方法 No synchronization on session demanded at all...
 			mav = invokeHandlerMethod(request, response, handlerMethod);
 		}
 
@@ -871,7 +871,7 @@ public class RequestMappingHandlerAdapter extends AbstractHandlerMethodAdapter
 			mavContainer.addAllAttributes(RequestContextUtils.getInputFlashMap(request));
 			modelFactory.initModel(webRequest, mavContainer, invocableMethod);
 			mavContainer.setIgnoreDefaultModelOnRedirect(this.ignoreDefaultModelOnRedirect);
-			//异步请求有关的
+			//day10：异步请求有关的
 			AsyncWebRequest asyncWebRequest = WebAsyncUtils.createAsyncWebRequest(request, response);
 			asyncWebRequest.setTimeout(this.asyncRequestTimeout);
 
@@ -891,7 +891,7 @@ public class RequestMappingHandlerAdapter extends AbstractHandlerMethodAdapter
 				});
 				invocableMethod = invocableMethod.wrapConcurrentResult(result);
 			}
-			//真正开始执行目标方法
+			//day10：真正开始执行目标方法
 			invocableMethod.invokeAndHandle(webRequest, mavContainer);
 			if (asyncManager.isConcurrentHandlingStarted()) {
 				return null;
@@ -1000,7 +1000,7 @@ public class RequestMappingHandlerAdapter extends AbstractHandlerMethodAdapter
 	@Nullable
 	private ModelAndView getModelAndView(ModelAndViewContainer mavContainer,
 			ModelFactory modelFactory, NativeWebRequest webRequest) throws Exception {
-		//modelFactory准备模型数据  （请求域数据共享）session里面的数据搬家到request域
+		//day12：modelFactory准备模型数据  （请求域数据共享）session里面的数据搬家到request域
 		modelFactory.updateModel(webRequest, mavContainer);
 		if (mavContainer.isRequestHandled()) {
 			return null;
@@ -1013,7 +1013,7 @@ public class RequestMappingHandlerAdapter extends AbstractHandlerMethodAdapter
 		if (model instanceof RedirectAttributes) {
 			Map<String, ?> flashAttributes = ((RedirectAttributes) model).getFlashAttributes();
 			HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
-			if (request != null) { //重定向数据的共享，RedirectView。先把数据移到request，再把request移到session
+			if (request != null) { //day12：重定向数据的共享，RedirectView。先把数据移到request，再把request移到session
 				RequestContextUtils.getOutputFlashMap(request).putAll(flashAttributes);
 			}
 		}

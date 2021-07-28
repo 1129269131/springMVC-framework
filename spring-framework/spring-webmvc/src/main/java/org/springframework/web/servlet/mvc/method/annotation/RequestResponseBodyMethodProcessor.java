@@ -168,7 +168,7 @@ public class RequestResponseBodyMethodProcessor extends AbstractMessageConverter
 		return (requestBody != null && requestBody.required() && !parameter.isOptional());
 	}
 
-	@Override  //如果返回值标注了 @ResponseBody注解，并且返回了String。会被这个人拦截处理器
+	@Override  //day11：如果返回值标注了 @ResponseBody注解，并且返回了String。会被这个人拦截处理器
 	public void handleReturnValue(@Nullable Object returnValue, MethodParameter returnType,
 			ModelAndViewContainer mavContainer, NativeWebRequest webRequest)
 			throws IOException, HttpMediaTypeNotAcceptableException, HttpMessageNotWritableException {

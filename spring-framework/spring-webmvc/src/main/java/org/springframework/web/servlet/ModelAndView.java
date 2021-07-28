@@ -48,11 +48,11 @@ public class ModelAndView {
 
 	/** View instance or view name String. */
 	@Nullable
-	private Object view;  //我们要去的页面
+	private Object view;  //day12：我们要去的页面
 
 	/** Model Map. */
 	@Nullable
-	private ModelMap model; //我们要给页面的数据
+	private ModelMap model; //day12：我们要给页面的数据
 
 	/** Optional HTTP status for the response. */
 	@Nullable

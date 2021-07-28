@@ -22,8 +22,6 @@ public class HelloController03 {
 	/**
 	 * day08：
 	 * RequestMappingHandlerAdapter:怎么反射执行到这个方法，确定每一个参数的值，以及处理返回值等等
-	 *
-	 * ModelAndView、Model、void\String xxxx
 	 * day09：请求数据到自定义Object属性的映射需要用到 --》（WebDataBinder【数据类型转换、绑定错误处理】）Factory
 	 */
 	@GetMapping("/hello03")

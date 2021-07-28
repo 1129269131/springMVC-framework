@@ -1107,7 +1107,7 @@ public class DispatcherServlet extends FrameworkServlet {
 				// As of 4.3, we're processing Errors thrown from handler methods as well,
 				// making them available for @ExceptionHandler methods and other scenarios.
 				dispatchException = new NestedServletException("Handler dispatch failed", err);
-			} //处理结果
+			} //day12：处理结果
 			processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);
 		} catch (Exception ex) {  //下面的即使执行完，异常还是抛出去
 			triggerAfterCompletion(processedRequest, response, mappedHandler, ex);
@@ -1133,8 +1133,8 @@ public class DispatcherServlet extends FrameworkServlet {
 	 * Do we need view name translation?
 	 */
 	private void applyDefaultViewName(HttpServletRequest request, @Nullable ModelAndView mv) throws Exception {
-		if (mv != null && !mv.hasView()) { //如果没有指定跳转的页面
-			String defaultViewName = getDefaultViewName(request); //给一个默认页面
+		if (mv != null && !mv.hasView()) { //day12：如果没有指定跳转的页面
+			String defaultViewName = getDefaultViewName(request); //day12：给一个默认页面
 			if (defaultViewName != null) {
 				mv.setViewName(defaultViewName);
 			}
@@ -1150,7 +1150,7 @@ public class DispatcherServlet extends FrameworkServlet {
 									   @Nullable Exception exception) throws Exception {
 
 		boolean errorView = false;
-		//如果有异常处理异常，以下if内全是异常处理环节
+		//day12：如果有异常处理异常，以下if内全是异常处理环节
 		if (exception != null) {
 			if (exception instanceof ModelAndViewDefiningException) {
 				logger.debug("ModelAndViewDefiningException encountered", exception);
@@ -1164,7 +1164,7 @@ public class DispatcherServlet extends FrameworkServlet {
 		//上面所有的异常解析器都没能处理这个异常，下面直接炸....
 		// 动态策略。 Did the handler return a view to render?   为啥？@ResponseBody（提前在解析返回值的时候，就已经把数据写出去了，所以这一步就没有了）
 		if (mv != null && !mv.wasCleared()) {
-			render(mv, request, response); //渲染ModeAndView，来解析模型和视图；最终决定响应效果
+			render(mv, request, response); //day12：渲染ModeAndView，来解析模型和视图；最终决定响应效果
 			if (errorView) {
 				WebUtils.clearErrorRequestAttributes(request);
 			}
