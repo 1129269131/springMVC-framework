@@ -170,7 +170,7 @@ public abstract class AbstractCachingViewResolver extends WebApplicationObjectSu
 	@Override
 	@Nullable
 	public View resolveViewName(String viewName, Locale locale) throws Exception {
-		if (!isCache()) { //如果以前解析过肯定有缓存
+		if (!isCache()) { //day14：如果以前解析过肯定有缓存
 			return createView(viewName, locale);
 		}
 		else {
@@ -180,7 +180,7 @@ public abstract class AbstractCachingViewResolver extends WebApplicationObjectSu
 				synchronized (this.viewCreationCache) {
 					view = this.viewCreationCache.get(cacheKey);
 					if (view == null) {
-						// 创建出view对象 Ask the subclass to create the View object.
+						// day14：创建出view对象 Ask the subclass to create the View object.
 						view = createView(viewName, locale);
 						if (view == null && this.cacheUnresolved) {
 							view = UNRESOLVED_VIEW;

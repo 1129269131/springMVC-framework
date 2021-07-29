@@ -38,7 +38,7 @@ public class HelloController04 {
 		//https://www.bilibili.com/video/BV19K4y1L7MT?p=32
 		String mvc = helloService.say(user+"：MVC"+name);
 		session.setAttribute("msg",mvc);
-		return "index01";
+		return "index01.jsp";
 	}
 
 }

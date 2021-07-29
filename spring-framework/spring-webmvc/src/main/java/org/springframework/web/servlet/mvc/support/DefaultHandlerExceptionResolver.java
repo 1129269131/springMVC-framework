@@ -139,7 +139,7 @@ import org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver;
  * @author Juergen Hoeller
  * @since 3.0
  * @see org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
- */  //默认的异常解析器,直接response.sendError，tomcat响应默认错误页
+ */  //day13：默认的异常解析器,直接response.sendError，tomcat响应默认错误页
 public class DefaultHandlerExceptionResolver extends AbstractHandlerExceptionResolver {
 
 	/**
@@ -169,7 +169,7 @@ public class DefaultHandlerExceptionResolver extends AbstractHandlerExceptionRes
 	protected ModelAndView doResolveException(
 			HttpServletRequest request, HttpServletResponse response, @Nullable Object handler, Exception ex) {
 
-		try {  //处理SpringMVC底层的异常
+		try {  //day13：处理SpringMVC底层的异常
 			if (ex instanceof HttpRequestMethodNotSupportedException) {
 				return handleHttpRequestMethodNotSupported(
 						(HttpRequestMethodNotSupportedException) ex, request, response, handler);

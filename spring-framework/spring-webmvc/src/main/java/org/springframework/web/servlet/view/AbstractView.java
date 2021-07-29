@@ -301,7 +301,7 @@ public abstract class AbstractView extends WebApplicationObjectSupport implement
 	 * Delegates to renderMergedOutputModel for the actual rendering.
 	 * @see #renderMergedOutputModel
 	 */
-	@Override  //父类的模板方法规定的 render 的步骤
+	@Override  //day14：父类的模板方法规定了 render 的步骤
 	public void render(@Nullable Map<String, ?> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
@@ -310,10 +310,10 @@ public abstract class AbstractView extends WebApplicationObjectSupport implement
 					", model " + (model != null ? model : Collections.emptyMap()) +
 					(this.staticAttributes.isEmpty() ? "" : ", static attributes " + this.staticAttributes));
 		}
-		//准备Model数据
+		//day14：准备Model数据
 		Map<String, Object> mergedModel = createMergedOutputModel(model, request, response);
 		prepareResponse(request, response);
-		renderMergedOutputModel(mergedModel, getRequestToExpose(request), response);  //渲染模型
+		renderMergedOutputModel(mergedModel, getRequestToExpose(request), response);  //day14：渲染模型
 	}
 
 	/**
@@ -424,7 +424,7 @@ public abstract class AbstractView extends WebApplicationObjectSupport implement
 	 * @param request current HTTP request
 	 * @param response current HTTP response
 	 * @throws Exception if rendering failed
-	 */  //给子类的模板方法
+	 */  //day14：给子类的模板方法
 	protected abstract void renderMergedOutputModel(
 			Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
@@ -435,16 +435,16 @@ public abstract class AbstractView extends WebApplicationObjectSupport implement
 	 * This method is suitable for all resources reachable by {@link javax.servlet.RequestDispatcher}.
 	 * @param model a Map of model objects to expose
 	 * @param request current HTTP request
-	 */ //把ModelAndView中Model里面的所有数据全部放在请求域中
+	 */ //day14：把ModelAndView中Model里面的所有数据全部放在请求域中
 	protected void exposeModelAsRequestAttributes(Map<String, Object> model,
 			HttpServletRequest request) throws Exception {
 
 		model.forEach((name, value) -> {
-			if (value != null) { //如果有值就是添加到请求域
+			if (value != null) { //day14：如果有值就是添加到请求域
 				request.setAttribute(name, value);
 			}
 			else {
-				request.removeAttribute(name);  //否则就是从请求域中移除此值
+				request.removeAttribute(name);  //day14：否则就是从请求域中移除此值
 			}
 		});
 	}

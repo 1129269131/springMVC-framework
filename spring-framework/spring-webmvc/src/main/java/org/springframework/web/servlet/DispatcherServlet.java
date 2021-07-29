@@ -1100,7 +1100,7 @@ public class DispatcherServlet extends FrameworkServlet {
 				}
 
 				applyDefaultViewName(processedRequest, mv);
-				mappedHandler.applyPostHandle(processedRequest, response, mv); //所有拦截器的postHandle
+				mappedHandler.applyPostHandle(processedRequest, response, mv); //day14：所有拦截器的postHandle
 			} catch (Exception ex) {
 				dispatchException = ex;
 			} catch (Throwable err) {
@@ -1155,14 +1155,14 @@ public class DispatcherServlet extends FrameworkServlet {
 			if (exception instanceof ModelAndViewDefiningException) {
 				logger.debug("ModelAndViewDefiningException encountered", exception);
 				mv = ((ModelAndViewDefiningException) exception).getModelAndView();
-			} else {  //定义无数种异常解析器就会得到不同的异常解析效果
+			} else {  //day13：定义无数种异常解析器就会得到不同的异常解析效果
 				Object handler = (mappedHandler != null ? mappedHandler.getHandler() : null);
 				mv = processHandlerException(request, response, handler, exception); //处理异常，所有的异常解析器都不能干活，这个异常就抛出去了
 				errorView = (mv != null);
 			}
 		}
 		//上面所有的异常解析器都没能处理这个异常，下面直接炸....
-		// 动态策略。 Did the handler return a view to render?   为啥？@ResponseBody（提前在解析返回值的时候，就已经把数据写出去了，所以这一步就没有了）
+		// day13：动态策略。 Did the handler return a view to render?   为啥？@ResponseBody（提前在解析返回值的时候，就已经把数据写出去了，所以这一步就没有了）
 		if (mv != null && !mv.wasCleared()) {
 			render(mv, request, response); //day12：渲染ModeAndView，来解析模型和视图；最终决定响应效果
 			if (errorView) {
@@ -1343,7 +1343,7 @@ public class DispatcherServlet extends FrameworkServlet {
 		request.removeAttribute(HandlerMapping.PRODUCIBLE_MEDIA_TYPES_ATTRIBUTE);
 
 		// Check registered HandlerExceptionResolvers...
-		ModelAndView exMv = null; //所有异常解析器继续解析
+		ModelAndView exMv = null; //day13：所有异常解析器继续解析
 		if (this.handlerExceptionResolvers != null) {
 			for (HandlerExceptionResolver resolver : this.handlerExceptionResolvers) {
 				exMv = resolver.resolveException(request, response, handler, ex);
@@ -1391,11 +1391,11 @@ public class DispatcherServlet extends FrameworkServlet {
 		Locale locale =
 				(this.localeResolver != null ? this.localeResolver.resolveLocale(request) : request.getLocale());
 		response.setLocale(locale);
-		//默认AcceptHeaderLocaleResolver会根据请求头中的Accept-Language字段决定浏览器能接受哪种中文/英文 页面
-		View view; //视图
-		String viewName = mv.getViewName(); //适配器执行完目标方法以后返回的ModelAndView对象里面有  index.jsp
+		//day14：默认AcceptHeaderLocaleResolver会根据请求头中的Accept-Language字段决定浏览器能接受哪种中文/英文 页面
+		View view; //day14：视图
+		String viewName = mv.getViewName(); //day14：适配器执行完目标方法以后返回的ModelAndView对象里面有  index.jsp
 		if (viewName != null) {
-			//************ 把目标方法的返回值字符串index.jsp 真正转为能用的View对象； We need to resolve the view name.
+			//day14：************ 把目标方法的返回值字符串index.jsp 真正转为能用的View对象； We need to resolve the view name.
 			view = resolveViewName(viewName, mv.getModelInternal(), locale, request);
 			if (view == null) {
 				throw new ServletException("Could not resolve view with name '" + mv.getViewName() +
@@ -1457,11 +1457,11 @@ public class DispatcherServlet extends FrameworkServlet {
 	@Nullable
 	protected View resolveViewName(String viewName, @Nullable Map<String, Object> model,
 								   Locale locale, HttpServletRequest request) throws Exception {
-		//所有的视图解析器 viewResolvers 尝试根据当前 viewName 得到 View对象
+		//day14：所有的视图解析器 viewResolvers 尝试根据当前 viewName 得到 View对象
 		if (this.viewResolvers != null) {
 			for (ViewResolver viewResolver : this.viewResolvers) {
 				View view = viewResolver.resolveViewName(viewName, locale);
-				if (view != null) { //即使一个返回值满足多种视图解析规则，排在前面的视图解析器解析成功就直接返回
+				if (view != null) { //day14：即使一个返回值满足多种视图解析规则，排在前面的视图解析器解析成功就直接返回
 					return view;
 				}
 			}

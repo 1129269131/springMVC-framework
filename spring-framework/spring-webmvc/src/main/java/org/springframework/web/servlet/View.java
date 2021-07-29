@@ -44,7 +44,7 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.web.servlet.view.AbstractView
  * @see org.springframework.web.servlet.view.InternalResourceView
  */
-public interface View { //所有的视觉效果都由视图决定
+public interface View { //day14：所有的视觉效果都由视图决定
 
 	/**
 	 * Name of the {@link HttpServletRequest} attribute that contains the response status code.
@@ -93,7 +93,7 @@ public interface View { //所有的视觉效果都由视图决定
 	 * @param request current HTTP request
 	 * @param response he HTTP response we are building
 	 * @throws Exception if rendering failed
-	 */ //request，response，model（数据 100个用户）， out.write(100个用户的excel)
+	 */ //day13：request，response，model（数据 100个用户）， out.write(100个用户的excel)
 	void render(@Nullable Map<String, ?> model, HttpServletRequest request, HttpServletResponse response)
 			throws Exception;
 

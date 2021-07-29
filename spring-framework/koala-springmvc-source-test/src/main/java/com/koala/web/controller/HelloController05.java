@@ -37,7 +37,7 @@ public class HelloController05 {
 		session.setAttribute("msg",mvc);
 		//SpringMVC的目标方法能写哪些返回值
 		//https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-ann-return-types
-		return "index01";
+		return "index01.jsp";
 	}
 
 }
