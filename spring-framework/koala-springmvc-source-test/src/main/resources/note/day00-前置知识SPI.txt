@@ -1,0 +1,4 @@
+一、
+	1、idea打开 spi-demo 的maven项目
+	2、运行 MainTest.java
+	3、app模块目录下的 pom.xml 中，任意组合注释mysql的dependency 或者 redis的dependency 进行测试

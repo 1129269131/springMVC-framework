@@ -297,7 +297,7 @@ public class ControllerAdviceBean implements Ordered {
 		}
 		List<ControllerAdviceBean> adviceBeans = new ArrayList<>();
 		for (String name : BeanFactoryUtils.beanNamesForTypeIncludingAncestors(beanFactory, Object.class)) {
-			if (!ScopedProxyUtils.isScopedTarget(name)) { //拿到所有组件看谁标注了 @ControllerAdvice
+			if (!ScopedProxyUtils.isScopedTarget(name)) { //day17：拿到所有组件看谁标注了 @ControllerAdvice
 				ControllerAdvice controllerAdvice = beanFactory.findAnnotationOnBean(name, ControllerAdvice.class);
 				if (controllerAdvice != null) {
 					// Use the @ControllerAdvice annotation found by findAnnotationOnBean()

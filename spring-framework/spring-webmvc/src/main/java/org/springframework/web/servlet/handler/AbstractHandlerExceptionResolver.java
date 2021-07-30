@@ -132,13 +132,13 @@ public abstract class AbstractHandlerExceptionResolver implements HandlerExcepti
 	 * to the {@link #doResolveException} template method.
 	 */
 	@Override
-	@Nullable  //父类抽象类规定的模板
+	@Nullable  //day16：父类抽象类规定的模板
 	public ModelAndView resolveException(
 			HttpServletRequest request, HttpServletResponse response, @Nullable Object handler, Exception ex) {
 
 		if (shouldApplyTo(request, handler)) {
 			prepareResponse(ex, response);
-			ModelAndView result = doResolveException(request, response, handler, ex); //留给子类的模板方法
+			ModelAndView result = doResolveException(request, response, handler, ex); //day16：留给子类的模板方法
 			if (result != null) {
 				// Print debug message when warn logger is not enabled.
 				if (logger.isDebugEnabled() && (this.warnLogger == null || !this.warnLogger.isWarnEnabled())) {
@@ -258,7 +258,7 @@ public abstract class AbstractHandlerExceptionResolver implements HandlerExcepti
 	 * @return a corresponding {@code ModelAndView} to forward to,
 	 * or {@code null} for default processing in the resolution chain
 	 */
-	@Nullable  //留给子类进行具体步骤的实现    【模板模式】
+	@Nullable  //day16：留给子类进行具体步骤的实现    【模板模式】
 	protected abstract ModelAndView doResolveException(
 			HttpServletRequest request, HttpServletResponse response, @Nullable Object handler, Exception ex);
 

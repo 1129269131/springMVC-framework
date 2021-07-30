@@ -262,11 +262,11 @@ public class ExceptionHandlerExceptionResolver extends AbstractHandlerMethodExce
 	}
 
 
-	@Override  //实现了 InitilazingBean 的组件，在容器创建完对象以后，会初始化调用 InitilazingBean
+	@Override  //day17：实现了 InitializingBean 的组件，在容器创建完对象以后，会初始化调用 InitializingBean
 	public void afterPropertiesSet() {
-		//初始化@ExceptionHandler 增强的缓存   Do this first, it may add ResponseBodyAdvice beans
+		//day17：初始化@ExceptionHandler 增强的缓存   Do this first, it may add ResponseBodyAdvice beans
 		initExceptionHandlerAdviceCache();
-		//准备好异常解析用的参数解析器
+		//day17：准备好异常解析用的参数解析器
 		if (this.argumentResolvers == null) {
 			List<HandlerMethodArgumentResolver> resolvers = getDefaultArgumentResolvers();
 			this.argumentResolvers = new HandlerMethodArgumentResolverComposite().addResolvers(resolvers);
@@ -281,7 +281,7 @@ public class ExceptionHandlerExceptionResolver extends AbstractHandlerMethodExce
 		if (getApplicationContext() == null) {
 			return;
 		}
-		//找到所有的 ControllerAdviceBean(标注了@ControllerAdvice注解的人) 、
+		//day17：找到所有的 ControllerAdviceBean(标注了@ControllerAdvice注解的人) 、
 		List<ControllerAdviceBean> adviceBeans = ControllerAdviceBean.findAnnotatedBeans(getApplicationContext());
 		for (ControllerAdviceBean adviceBean : adviceBeans) {
 			Class<?> beanType = adviceBean.getBeanType();
@@ -394,12 +394,12 @@ public class ExceptionHandlerExceptionResolver extends AbstractHandlerMethodExce
 	@Nullable
 	protected ModelAndView doResolveHandlerMethodException(HttpServletRequest request,
 			HttpServletResponse response, @Nullable HandlerMethod handlerMethod, Exception exception) {
-		//为当前异常找一个处理方法？？？  @ExceptionHandler注解标注的方法
+		//day16：为当前异常找一个处理方法？？？  @ExceptionHandler注解标注的方法
 		ServletInvocableHandlerMethod exceptionHandlerMethod = getExceptionHandlerMethod(handlerMethod, exception);
 		if (exceptionHandlerMethod == null) {
 			return null;
 		}
-		//异常解析器里面 还是利用了以前的 argumentResolvers和 returnValueHandlers扩展了异常解析的功能
+		//day17：异常解析器里面 还是利用了以前的 argumentResolvers和 returnValueHandlers扩展了异常解析的功能
 		if (this.argumentResolvers != null) {
 			exceptionHandlerMethod.setHandlerMethodArgumentResolvers(this.argumentResolvers);
 		}
@@ -491,7 +491,7 @@ public class ExceptionHandlerExceptionResolver extends AbstractHandlerMethodExce
 				handlerType = AopUtils.getTargetClass(handlerMethod.getBean());
 			}
 		}
-		//遍历所有的@ControllerAdvice，看哪个类的方法能处理这个异常
+		//day17：遍历所有的@ControllerAdvice，看哪个类的方法能处理这个异常
 		for (Map.Entry<ControllerAdviceBean, ExceptionHandlerMethodResolver> entry : this.exceptionHandlerAdviceCache.entrySet()) {
 			ControllerAdviceBean advice = entry.getKey();
 			if (advice.isApplicableToBeanType(handlerType)) {

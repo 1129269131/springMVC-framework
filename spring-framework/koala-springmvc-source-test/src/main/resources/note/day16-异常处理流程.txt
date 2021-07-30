@@ -1,0 +1,9 @@
+一、
+	1、给 DispatcherServlet.java 类的 mv = processHandlerException(request, response, handler, exception); 处打上断点
+	2、测试前先注释掉 AppStarter01.java 类和MeiNvViewResolver01.java 类，避免被这两个类影响
+	3、debugger模式启动tomcat
+	4、浏览器访问：http://localhost:8080/koala_springmvc_source_test/hello08
+	5、浏览器访问：http://localhost:8080/koala_springmvc_source_test/hello08?user=aaa&i=0
+	6、浏览器访问：http://localhost:8080/koala_springmvc_source_test/hello08?user=abc&i=6
+	7、查看idea的调用堆栈，从下往上查看它的调用过程（注：灰色部分为tomcat的调用堆栈，应忽略）
+PS：核心代码：HandlerExceptionResolverComposite.java 类的 for (HandlerExceptionResolver handlerExceptionResolver : this.resolvers) {

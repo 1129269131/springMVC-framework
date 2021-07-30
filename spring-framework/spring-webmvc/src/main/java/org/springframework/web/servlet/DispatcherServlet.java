@@ -1109,7 +1109,7 @@ public class DispatcherServlet extends FrameworkServlet {
 				dispatchException = new NestedServletException("Handler dispatch failed", err);
 			} //day12：处理结果
 			processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);
-		} catch (Exception ex) {  //下面的即使执行完，异常还是抛出去
+		} catch (Exception ex) {  //day16：下面的即使执行完，异常还是抛出去
 			triggerAfterCompletion(processedRequest, response, mappedHandler, ex);
 		} catch (Throwable err) {
 			triggerAfterCompletion(processedRequest, response, mappedHandler,
@@ -1157,11 +1157,11 @@ public class DispatcherServlet extends FrameworkServlet {
 				mv = ((ModelAndViewDefiningException) exception).getModelAndView();
 			} else {  //day13：定义无数种异常解析器就会得到不同的异常解析效果
 				Object handler = (mappedHandler != null ? mappedHandler.getHandler() : null);
-				mv = processHandlerException(request, response, handler, exception); //处理异常，所有的异常解析器都不能干活，这个异常就抛出去了
+				mv = processHandlerException(request, response, handler, exception); //day16：处理异常，所有的异常解析器都不能干活，这个异常就抛出去了
 				errorView = (mv != null);
 			}
 		}
-		//上面所有的异常解析器都没能处理这个异常，下面直接炸....
+		//day16：上面所有的异常解析器都没能处理这个异常，下面直接炸....
 		// day13：动态策略。 Did the handler return a view to render?   为啥？@ResponseBody（提前在解析返回值的时候，就已经把数据写出去了，所以这一步就没有了）
 		if (mv != null && !mv.wasCleared()) {
 			render(mv, request, response); //day12：渲染ModeAndView，来解析模型和视图；最终决定响应效果
@@ -1373,7 +1373,7 @@ public class DispatcherServlet extends FrameworkServlet {
 			return exMv;
 		}
 
-		throw ex; //如果所有的异常解析器都不能解析就直接抛出这个异常
+		throw ex; //day16：如果所有的异常解析器都不能解析就直接抛出这个异常
 	}
 
 	/**
@@ -1475,7 +1475,7 @@ public class DispatcherServlet extends FrameworkServlet {
 		if (mappedHandler != null) {
 			mappedHandler.triggerAfterCompletion(request, response, ex);
 		}
-		throw ex;  //抛出去
+		throw ex;  //day16：抛出去
 	}
 
 	/**

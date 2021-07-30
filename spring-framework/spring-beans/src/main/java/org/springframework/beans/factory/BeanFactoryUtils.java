@@ -225,12 +225,12 @@ public abstract class BeanFactoryUtils {
 	 */
 	public static String[] beanNamesForTypeIncludingAncestors(ListableBeanFactory lbf, Class<?> type) {
 		Assert.notNull(lbf, "ListableBeanFactory must not be null");
-		String[] result = lbf.getBeanNamesForType(type);  //当前容器先找
+		String[] result = lbf.getBeanNamesForType(type);  //day18：当前容器先找
 		if (lbf instanceof HierarchicalBeanFactory) {
 			HierarchicalBeanFactory hbf = (HierarchicalBeanFactory) lbf;
 			if (hbf.getParentBeanFactory() instanceof ListableBeanFactory) {
 				String[] parentResult = beanNamesForTypeIncludingAncestors(
-						(ListableBeanFactory) hbf.getParentBeanFactory(), type); //拿到父容器再找
+						(ListableBeanFactory) hbf.getParentBeanFactory(), type); //day18：拿到父容器再找
 				result = mergeNamesWithParent(result, parentResult, hbf);
 			}
 		}

@@ -45,7 +45,7 @@ public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
 	private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();
 
 
-	@Autowired(required = false)  //拿到容器中所有的 WebMvcConfigurer
+	@Autowired(required = false)  //day19：拿到容器中所有的 WebMvcConfigurer
 	public void setConfigurers(List<WebMvcConfigurer> configurers) {
 		if (!CollectionUtils.isEmpty(configurers)) {
 			this.configurers.addWebMvcConfigurers(configurers);

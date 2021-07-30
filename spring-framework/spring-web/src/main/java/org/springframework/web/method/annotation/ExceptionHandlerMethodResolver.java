@@ -72,7 +72,7 @@ public class ExceptionHandlerMethodResolver {
 	 * A constructor that finds {@link ExceptionHandler} methods in the given type.
 	 * @param handlerType the type to introspect
 	 */
-	public ExceptionHandlerMethodResolver(Class<?> handlerType) { //扫描当前这个ControllerAdvice中所有标注了@ExceptionHandler的方法
+	public ExceptionHandlerMethodResolver(Class<?> handlerType) { //day17：扫描当前这个ControllerAdvice中所有标注了@ExceptionHandler的方法
 		for (Method method : MethodIntrospector.selectMethods(handlerType, EXCEPTION_HANDLER_METHODS)) {
 			for (Class<? extends Throwable> exceptionType : detectExceptionMappings(method)) {
 				addExceptionMapping(exceptionType, method);
@@ -107,7 +107,7 @@ public class ExceptionHandlerMethodResolver {
 		Assert.state(ann != null, "No ExceptionHandler annotation");
 		result.addAll(Arrays.asList(ann.value()));
 	}
-	//每一个方法能处理什么异常类型，缓存到Map中。
+	//day17：每一个方法能处理什么异常类型，缓存到Map中。
 	private void addExceptionMapping(Class<? extends Throwable> exceptionType, Method method) {
 		Method oldMethod = this.mappedMethods.put(exceptionType, method);
 		if (oldMethod != null && !oldMethod.equals(method)) {

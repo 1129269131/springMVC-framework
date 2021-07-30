@@ -1,0 +1,8 @@
+一、
+	1、idea打开 springboot-first 的maven项目
+	2、运行 Main01.java
+	3、浏览器访问：localhost:8888/boot/66	查看结果
+	4、运行 Main02.java
+	5、浏览器访问：localhost:8888/boot/66	查看结果（目前结果会为500，原因是未处理response）
+	6、运行 Main03.java
+	7、浏览器访问：localhost:8888/boot/hello66	查看结果
