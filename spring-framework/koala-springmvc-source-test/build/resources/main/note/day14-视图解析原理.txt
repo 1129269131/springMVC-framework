@@ -4,4 +4,5 @@
 	3、debugger模式启动tomcat
 	4、浏览器访问：http://localhost:8080/koala_springmvc_source_test/hello06?name=zhangsan&user=haha
 	5、查看idea的调用堆栈，从下往上查看它的调用过程（注：灰色部分为tomcat的调用堆栈，应忽略）
+
 PS：关键点：DispatcherServlet.java 类的 view = resolveViewName(viewName, mv.getModelInternal(), locale, request);

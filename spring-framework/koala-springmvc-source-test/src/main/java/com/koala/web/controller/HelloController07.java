@@ -21,7 +21,7 @@ public class HelloController07 {
 		//模拟数据库查询了
 		model.addAttribute("info","超级大美女");
 
-		return "meinv:"+name;  //页面的渲染效果是美女的详情
+		return "meinv:" + name;  //页面的渲染效果是美女的详情
 	}
 
 }

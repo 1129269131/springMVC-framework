@@ -1,5 +1,5 @@
 一、
-	1、给 ViewResolverComposite.java 类的 public View resolveViewName(String viewName, Locale locale) throws Exception { 方法里打上断点
+	1、给 ViewResolverComposite.java 类的 for (ViewResolver viewResolver : this.viewResolvers) { 处打上断点
 	2、测试前先注释掉 AppStarter01.java 类和MeiNvViewResolver01.java 类，避免被这两个类影响
 	3、debugger模式启动tomcat
 	4、浏览器访问：http://localhost:8080/koala_springmvc_source_test/meinv01?name=haha

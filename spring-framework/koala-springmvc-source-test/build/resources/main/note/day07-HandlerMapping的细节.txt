@@ -1,6 +1,6 @@
 一、
 	1、给 DispatcherServlet.java 类的 protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception { 方法中打上断点
-	2、给 AbstractHandlerMethodMapping.java 类的 this.registry.put(mapping, 方法中打上断点
+	2、给 org.springframework.web.servlet.handler 包下的 AbstractHandlerMethodMapping.java 类的 this.registry.put(mapping, 方法中打上断点
 	3、测试前先注释掉 AppStarter01.java 类，避免被该类影响
 	4、debugger模式启动tomcat
 	5、浏览器访问：http://localhost:8080/koala_springmvc_source_test/hello02

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HelloController08 {
 
 	@GetMapping("/hello08")
-	public String sayHello(@RequestParam("user")String user, Integer i){
-		int x =10/i;
+	public String sayHello(@RequestParam("user") String user, Integer i) {
+		int x = 10 / i;
 
-		if("abc".equals(user)){
+		if ("abc".equals(user)) {
 			//非法的用户信息
 			throw new InvalidUserException01();
 		}

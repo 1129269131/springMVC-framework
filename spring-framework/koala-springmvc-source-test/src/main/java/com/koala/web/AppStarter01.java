@@ -16,7 +16,7 @@ import javax.servlet.ServletRegistration;
  * 		1）、创建了容器、指定了配置类（所有ioc、aop等spring的功能就ok）
  * 		2）、注册一个Servlet；	DispatcherServlet；
  * 		3）、以后所有的请求都交给了 DispatcherServlet；
- * 	效果，访问Tomcat部署的这个Web应用下的所有请求都会被 	DispatcherServlet 处理
+ * 	效果，访问Tomcat部署的这个Web应用下的所有请求都会被 DispatcherServlet 处理
  * 	DispatcherServlet就会进入强大的基于注解的mvc处理流程（@GetMapping）
  * 必须Servlet3.0以上才可以；Tomcat6.0以上才支持Servlet3.0规范
  *

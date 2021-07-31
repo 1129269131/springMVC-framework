@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 容器中有 WebMvcConfigurer 类型的组件（@Component\@Configuration）就行
  * Create by koala on 2021-07-29
  */
+//点击进入该注解
 @EnableWebMvc //启用SpringMVC功能，修改SpringMVC底层行为就会很方便只需要实现 WebMvcConfigurer 即可
 @Configuration
 public class MvcExtendConfiguration01 implements WebMvcConfigurer {

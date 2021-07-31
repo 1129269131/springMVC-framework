@@ -98,6 +98,6 @@ import org.springframework.context.annotation.Import;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-@Import(DelegatingWebMvcConfiguration.class)
+@Import(DelegatingWebMvcConfiguration.class)//day19：点击进入该类
 public @interface EnableWebMvc {
 }
