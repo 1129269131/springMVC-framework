@@ -370,7 +370,7 @@ public class WebMvcConfigurationSupport implements ApplicationContextAware, Serv
 	 * Override this method to add Spring MVC interceptors for
 	 * pre- and post-processing of controller invocation.
 	 * @see InterceptorRegistry
-	 */  //模板方法的好处
+	 */  //day19：模板方法的好处
 	protected void addInterceptors(InterceptorRegistry registry) {
 	}
 
@@ -858,8 +858,8 @@ public class WebMvcConfigurationSupport implements ApplicationContextAware, Serv
 	protected final List<HttpMessageConverter<?>> getMessageConverters() {
 		if (this.messageConverters == null) {
 			this.messageConverters = new ArrayList<>();
-			configureMessageConverters(this.messageConverters); //扩展messageConverters
-			if (this.messageConverters.isEmpty()) { //不扩展
+			configureMessageConverters(this.messageConverters); //day19：扩展messageConverters
+			if (this.messageConverters.isEmpty()) { //day19：不扩展
 				addDefaultHttpMessageConverters(this.messageConverters);
 			}
 			extendMessageConverters(this.messageConverters);
@@ -1114,21 +1114,21 @@ public class WebMvcConfigurationSupport implements ApplicationContextAware, Serv
 	 * to allow other potential {@link ViewResolver} beans to resolve views.
 	 * @since 4.1
 	 */
-	@Bean  //给容器中放了视图解析器，容器中一开始就有mvcViewResolver这个bean的定义信息
+	@Bean  //day19：给容器中放了视图解析器，容器中一开始就有mvcViewResolver这个bean的定义信息
 	public ViewResolver mvcViewResolver(
 			@Qualifier("mvcContentNegotiationManager") ContentNegotiationManager contentNegotiationManager) {
 		ViewResolverRegistry registry =
 				new ViewResolverRegistry(contentNegotiationManager, this.applicationContext);
-		configureViewResolvers(registry); //前面自己扩展配置视图解析器，
-		//上一步扩展完以后可能有值，
-		if (registry.getViewResolvers().isEmpty() || this.applicationContext != null) {
-			String[] names = BeanFactoryUtils.beanNamesForTypeIncludingAncestors( //容器中只有一个组件的定义
+		configureViewResolvers(registry); //day19：前面自己扩展配置视图解析器，
+		//day19：上一步扩展完以后可能有值，
+		if (registry.getViewResolvers().isEmpty() || this.applicationContext != null) {//day19：注意这里被修改过代码，原先代码为：&&
+			String[] names = BeanFactoryUtils.beanNamesForTypeIncludingAncestors( //day19：容器中只有一个组件的定义
 					this.applicationContext, ViewResolver.class, true, false);
-			if (true || names.length == 1) { //容器中有视图解析器，会把 InternalResourceViewResolver 放在容器中
-				registry.getViewResolvers().add(new InternalResourceViewResolver()); //总是把默认的加入进去
+			if (true || names.length == 1) { //day19：容器中有视图解析器，会把 InternalResourceViewResolver 放在容器中，注意这里被修改过代码，原先代码为：if (names.length == 1) {
+				registry.getViewResolvers().add(new InternalResourceViewResolver()); //day19：总是把默认的加入进
 			}
 		}
-		//我们如果扩展配置了，完全按照我们configureViewResolvers，如果没有配置，用默认
+		//day19：我们如果扩展配置了，完全按照我们configureViewResolvers，如果没有配置，用默认
 		ViewResolverComposite composite = new ViewResolverComposite();
 		composite.setOrder(registry.getOrder());
 		composite.setViewResolvers(registry.getViewResolvers());
@@ -1144,7 +1144,7 @@ public class WebMvcConfigurationSupport implements ApplicationContextAware, Serv
 	/**
 	 * Override this method to configure view resolution.
 	 * @see ViewResolverRegistry
-	 */  //留给子类的模板方法
+	 */  //day19：留给子类的模板方法
 	protected void configureViewResolvers(ViewResolverRegistry registry) {
 	}
 

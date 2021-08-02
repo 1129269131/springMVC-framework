@@ -53,7 +53,7 @@ public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {/
 	}
 
 
-	@Override //访问者模式
+	@Override //day19：访问者模式
 	protected void configurePathMatch(PathMatchConfigurer configurer) {
 		this.configurers.configurePathMatch(configurer);
 	}
@@ -98,9 +98,9 @@ public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {/
 		this.configurers.addViewControllers(registry);
 	}
 
-	@Override  //配置扩展视图解析器
+	@Override  //day19：配置扩展视图解析器
 	protected void configureViewResolvers(ViewResolverRegistry registry) {
-		this.configurers.configureViewResolvers(registry); //让所有的configurers进行定制
+		this.configurers.configureViewResolvers(registry); //day19：让所有的configurers进行定制
 	}
 
 	@Override
