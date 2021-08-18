@@ -10,8 +10,8 @@ com/atguigu/web/exception/InvalidUserException.java
  com.atguigu.web.exception.InvalidUserException
 com/atguigu/web/controller/HelloSimpleController.java
  com.atguigu.web.controller.HelloSimpleController
-com/atguigu/web/controller/HelloController.java
- com.atguigu.web.controller.HelloController
+com/atguigu/web/exception/MyExceptionHandler.java
+ com.atguigu.web.exception.MyExceptionHandler
 com/atguigu/web/controller/HelloHttpRequestHandler.java
  com.atguigu.web.controller.HelloHttpRequestHandler
 com/atguigu/web/config/SpringMVCConfig.java
@@ -22,5 +22,5 @@ com/atguigu/web/QuickAppStarter.java
  com.atguigu.web.QuickAppStarter
 com/atguigu/web/AppStarter.java
  com.atguigu.web.AppStarter
-com/atguigu/web/exception/MyExceptionHandler.java
- com.atguigu.web.exception.MyExceptionHandler
+com/atguigu/web/controller/HelloController.java
+ com.atguigu.web.controller.HelloController

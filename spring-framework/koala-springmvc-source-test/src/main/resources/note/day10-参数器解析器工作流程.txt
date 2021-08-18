@@ -1,6 +1,6 @@
 一、
-	1、给 RequestMappingHandlerAdapter.java 类的 ModelAndViewContainer mavContainer = new ModelAndViewContainer(); 方法中打上断点
-	2、给 RequestMappingHandlerAdapter.java 类的 invocableMethod.invokeAndHandle(webRequest, mavContainer); 处打上断点，Step Into进入方法查看
+	1、给 org.springframework.web.servlet.mvc.method.annotation 包下的 RequestMappingHandlerAdapter.java 类的 ModelAndViewContainer mavContainer = new ModelAndViewContainer(); 方法中打上断点
+	2、给 org.springframework.web.servlet.mvc.method.annotation 包下的 RequestMappingHandlerAdapter.java 类的 invocableMethod.invokeAndHandle(webRequest, mavContainer); 处打上断点，Step Into进入方法查看
 	3、测试前先注释掉 AppStarter01.java 类和MeiNvViewResolver01.java 类，避免被这两个类影响
 	4、debugger模式启动tomcat
 	5、浏览器访问：http://localhost:8080/koala_springmvc_source_test/hello04?name=zhangsan&user=haha
